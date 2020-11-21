@@ -13,9 +13,9 @@ app.get('/cainiao', (req, res) => {0
     })
 })
 
-app.get('/pog', (req, res) => {0
+app.get('/aramex', (req, res) => {0
     const query = req.query;
-    axios.get('https://global.cainiao.com/detail.htm?mailNoList='+query.search).then(e => {
+    axios.get('https://www.aramex.com.au/tracking-api/?callback&LabelNo='+query.search+'&dataFormat=json').then(e => {
         const dom = new JSDOM(e.data);
         const textArea = (JSON.parse(dom.window.document.querySelector("textarea").value).data)[0]
         res.send(textArea)
@@ -44,5 +44,7 @@ app.get('/auspost', (req, res) => {
     })
 
 })
+
+
 
 
